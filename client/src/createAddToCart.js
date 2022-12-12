@@ -1,4 +1,4 @@
-export const createAddToCart = (setItemCount, itemCount) => async (Product) => {
+export const createAddToCart = (setItemCount, itemCount,setCartData) => async (Product) => {
   // need to do something with this product
   // setItemCount(itemCount + 1);
   try {
@@ -13,6 +13,7 @@ export const createAddToCart = (setItemCount, itemCount) => async (Product) => {
     currCart.push(Product);
     localStorage.setItem("Cart",JSON.stringify(currCart));
     setItemCount(currCart.length);
+    setCartData(currCart);
     
   } catch(err){
       console.error("failed To add to cart")

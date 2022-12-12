@@ -18,13 +18,13 @@ async function connectToDB()
 {
     try{
         //console.log("lets try conn to mongo");
-        console.log("try conn to mongo---------------------------------------------------------------------")
+        console.log("try conn to mongo")
         
         await  mongoose.connect(uri, { 
             useUnifiedTopology: true, 
             useNewUrlParser: true 
         });
-        console.log("conn to mongo---------------------------------------------------------------------")
+        console.log("conn to mongo")
     }catch(err){
         console.error(err);   
     }
