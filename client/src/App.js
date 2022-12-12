@@ -19,7 +19,11 @@ function App() {
 
   const backendData = useBackendData();
 
-  const [itemCount, setItemCount] = React.useState(0); 
+  var count=0;
+  JSON.parse(localStorage.getItem("Cart"))?.forEach(element => {
+    count++;})
+
+  const [itemCount, setItemCount] = React.useState(count); 
   
 
   
