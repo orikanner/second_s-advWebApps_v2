@@ -1,3 +1,4 @@
+const cartService = require("../services/cartService");
 exports.getAllCartProducts =(req,res) =>{
     // res.status(200).json({
     //     success : true,
@@ -6,6 +7,18 @@ exports.getAllCartProducts =(req,res) =>{
     //console.log("getAllcart from cart controller")
 }
 exports.addToCart = (req,res) => {
-    console.log("cart Controller??")
+    
+}
+
+exports.userForm = (req,res) => {
+    
+    try{
+        const { name, address } = req.body
+        cartService.serviceAddUser(name,address);
+        res.end();
+    }catch(err){
+        console.log("failed in controller :",err);
+    }
+    
 }
 

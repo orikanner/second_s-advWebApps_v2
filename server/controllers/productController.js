@@ -2,7 +2,7 @@ const productService = require("../services/productsService")
 
 exports.getAllProducts = async (req,res) =>{
    //{"products":
-   console.log("prod controller");
+   
    res.json(await productService.getAllProducts());
 
   }
