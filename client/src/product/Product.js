@@ -14,7 +14,7 @@ export default function Product({product, handler , btnContent}) {
   return (
     <ProductBox>
       <p>
-         <Link to={product.pageLink}><><Header>{product.name}</Header></> </Link> <br/><br></br>
+         <Link to={"/product/"+product.name}><><Header>{product.name}</Header></> </Link> <br/><br></br>
           - {product.price}$ - 
            <br/><br/>
           <button onClick={() => handler(product)}>{btnContent}</button>

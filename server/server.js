@@ -10,23 +10,26 @@ app.use(cors());
 //   next();
 // });
 
-const {defult: mongoose} = require("mongoose");
+const {default: mongoose} = require("mongoose");
 
 
-const uri = "mongodb+srv://orikanner12345:orikanner12345@cluster0.4njflyi.mongodb.net/?retryWrites=true&w=majority"
+const uri = "mongodb+srv://orikanner12345:orikanner12345@cluster0.4njflyi.mongodb.net/shop?retryWrites=true&w=majority"
 async function connectToDB()
 {
     try{
         //console.log("lets try conn to mongo");
+        console.log("try conn to mongo---------------------------------------------------------------------")
+        
         await  mongoose.connect(uri, { 
             useUnifiedTopology: true, 
             useNewUrlParser: true 
         });
-        //console.log("conn to mongo")
+        console.log("conn to mongo---------------------------------------------------------------------")
     }catch(err){
         console.error(err);   
     }
 }
+
 connectToDB();
 
 

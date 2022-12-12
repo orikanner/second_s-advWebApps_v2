@@ -9,7 +9,7 @@ export default function ProductPage({productsList}) {
   
   const { name } = useParams();
 
-    const pr = productsList?.find(prod=> prod.name == name );// 
+    const pr = productsList?.find(prod=> prod.name == name );// ?.== means if productList ex than go for find if not it will skip this prevents error;
 
     if (!pr) return <p>page not found...</p>
 

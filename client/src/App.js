@@ -15,8 +15,7 @@ import { createRemoveFromCart } from "./createRemoveFromCart";
 
 
 function App() {
-  const addToCartString = "Add To Cart";
-  const RemoveFromCartString = "Remove From Cart";
+
 
   const backendData = useBackendData();
 
@@ -35,7 +34,7 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<ProductsList productsList={backendData} handler={onAddToCart} btnContent={addToCartString}/>}
+            element={<ProductsList productsList={backendData} handler={onAddToCart} btnContent={"Add To Cart"}/>}
           />
           <Route
             path="/product/:name"
@@ -43,11 +42,11 @@ function App() {
           />
           <Route
             path="/cart/MyCart"
-            element={<ProductsList  productsList={backendData} handler={onRemoveFromCart}btnContent={RemoveFromCartString}/>}
+            element={<ProductsList  productsList={backendData} handler={onRemoveFromCart}btnContent={"Remove From Cart"}/>}
           />
           <Route path="*" element={<p>page not found...</p>} />
         </Routes>
-        <p>&copy; Ori Kanner 2022</p>
+        <p>&copy; Ori and Nimi 2022</p>
       </Router>
     </>
   );

@@ -4,6 +4,8 @@ import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 export function useBackendData() {
   const [backendData, setBackendData] = useState(null);
 
+
+
   useEffect(() => {
     (async () => {
       try {
@@ -12,7 +14,7 @@ export function useBackendData() {
         setBackendData(data);
       }
       catch (err) {
-        console.log('COULD NOT FETCH BCZ', err.message);
+        console.log('COULD NOT FETCH', err.message);
       }
     })();
   }, []);
