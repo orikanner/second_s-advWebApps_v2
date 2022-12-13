@@ -6,13 +6,13 @@ export const createRemoveFromCart =
       JSON.parse(localStorage.getItem("Cart")).forEach((element) => {
         currCart.push(element);
       });
-      const index = currCart.indexOf(product);
+      var index = currCart.findIndex(obj => obj.name === product.name)
+      console.log("\nIndex of is: " + index + "\n The product is: " + JSON.stringify(product.name));
       currCart.splice(index, 1);
-
       localStorage.setItem("Cart", JSON.stringify(currCart));
       setItemCount(currCart.length);
       setCartData(currCart);
     } catch (err) {
-      console.error("failed To add to cart");
+      console.error(err);
     }
   };
