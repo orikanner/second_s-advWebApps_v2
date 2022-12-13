@@ -11,7 +11,7 @@ export function PageHeader({ itemCount }) {
       <LinksBox>
         <Link to="/">
           <>
-            <MyLink>Menu</MyLink>
+            <MyLink >Menu</MyLink>
           </>
         </Link>
         <Link to="/cart/MyCart">

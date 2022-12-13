@@ -27,18 +27,25 @@ function App() {
       currCart.push(element)})
   // },[])
   
+  
+ 
+  
  
 
     const [cartData, setCartData]= React.useState(currCart);
+    const [itemCount, setItemCount] = React.useState(currCart.length); 
   
-  const [itemCount, setItemCount] = React.useState(currCart.length); 
-  
-  
+    useEffect(()=>{
+      console.log("cuurcart",currCart);
+      setCartData(cartData);
+     
+      
+  },[cartData])
 
   
 
-  const onAddToCart = createAddToCart(setItemCount, itemCount,setCartData);
-  const onRemoveFromCart = createRemoveFromCart(setItemCount,itemCount,setCartData);
+  const onAddToCart = createAddToCart(setItemCount, itemCount,setCartData,backendData);
+  const onRemoveFromCart = createRemoveFromCart(setItemCount,itemCount,setCartData,backendData);
   
   return (
     <>
@@ -56,7 +63,7 @@ function App() {
           <Route
             path="/cart/MyCart"
             element={<>
-              <ProductsList  productsList={cartData} handler={onRemoveFromCart}btnContent={"Remove From Cart"}/>
+              <ProductsList  productsList={cartData} handler={onRemoveFromCart}btnContent={"Remove From Cart"} cartCss={"cartCards"}/>
               <CartForm></CartForm>
             </>}
           />
@@ -69,4 +76,3 @@ function App() {
 }
 
 export default App;
-// thanks :__)

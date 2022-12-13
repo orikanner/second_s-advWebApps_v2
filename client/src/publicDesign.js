@@ -13,7 +13,7 @@ export const MyLink = styled.span`
 `;
 
 export const LinksBox = styled.nav`
-  
+  margin:1rem;
   height: 50px;
   width:auto;
   display: flex;

@@ -1,6 +1,5 @@
 export const createAddToCart = (setItemCount, itemCount,setCartData) => async (Product) => {
-  // need to do something with this product
-  // setItemCount(itemCount + 1);
+  
   try {
     const currCart = [];
     if (!JSON.parse(localStorage.getItem("Cart")))
