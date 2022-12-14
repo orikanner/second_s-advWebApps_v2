@@ -8,8 +8,9 @@ const user = new mongoose.Schema({
     adderss: {type: String,required:'true'},
     cart :{
             type:[productSchema] ,require:'undefined'
-          }
-    
+          },
+    total : {type: Number , require:'true'}
+      
 })
 
 module.exports = mongoose.model("user",user);

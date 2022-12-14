@@ -1,17 +1,17 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import Product from './product/Product'
 
-export default function ProductsList({productsList ,handler, btnContent,cartCss=""}) {
-  //console.log("from ProductsLittComp",productsList);
-  
-  // if(btnContent === "Add To Cart")
 
+export default function ProductsList({productsList, isAdder ,cartCss}={cartCss:""}) {
+ 
+  //// const productList = useSelector(store => store.backendData);
   if (!productsList) return <p>loading...</p>
-  
+    
     return (
    
-      productsList.map(pr => {
-        return <Product key={pr.name}  product ={pr} handler = {handler}  btnContent ={btnContent} cartCss={cartCss}/>
+      productsList.map(product => {
+        return <Product key={product.name} {...{product, isAdder, cartCss}}/>
          
         } )
        

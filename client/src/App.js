@@ -13,6 +13,7 @@ import { PageHeader } from "./PageHeader";
 import { createAddToCart } from "./createAddToCart";
 import { createRemoveFromCart } from "./createRemoveFromCart";
 import CartForm from "./cart/CartForm";
+import CartComp from "./cart/CartComp";
 
 
 function App() {
@@ -20,16 +21,6 @@ function App() {
 
   const backendData = useBackendData();
   var currCart=[];
-  
-  // useEffect(()=>{
-    //  currCart=[];
-    JSON.parse(localStorage.getItem("Cart"))?.forEach(element => {
-      currCart.push(element)})
-  // },[])
-  
-  
- 
-  
  
 
     const [cartData, setCartData]= React.useState(currCart);
@@ -43,10 +34,6 @@ function App() {
   },[cartData])
 
   
-
-  const onAddToCart = createAddToCart(setItemCount, itemCount,setCartData,backendData);
-  const onRemoveFromCart = createRemoveFromCart(setItemCount,itemCount,setCartData,backendData);
-  
   return (
     <>
       <Router>
@@ -54,7 +41,7 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<ProductsList productsList={backendData} handler={onAddToCart} btnContent={"Add To Cart"}/>}
+            element={<ProductsList productsList={backendData} isAdder={true}/>}
           />
           <Route
             path="/product/:name"
@@ -62,10 +49,7 @@ function App() {
           />
           <Route
             path="/cart/MyCart"
-            element={<>
-              <ProductsList  productsList={cartData} handler={onRemoveFromCart}btnContent={"Remove From Cart"} cartCss={"cartCards"}/>
-              <CartForm></CartForm>
-            </>}
+            element={<CartComp/>}
           />
           <Route path="*" element={<p>page not found...</p>} />
         </Routes>

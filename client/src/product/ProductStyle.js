@@ -13,6 +13,7 @@ export const ProductBox = styled.div`
   justify-content: space-between;
   align-items: center;// works the ops of our flex-direction 
   box-shadow: 0 1.75px 1.75px 1.75px rgba(9, 9, 9, 0.23);
+  background-color: ${props => props.special? "black" : "white"};
   img {
     max-width:25%;
     max-height:25%;

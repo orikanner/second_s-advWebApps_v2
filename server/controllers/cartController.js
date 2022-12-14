@@ -17,8 +17,9 @@ exports.userForm = (req,res) => {
     // city: City.current.address,
     // Cart: LSCart};
     try{
-        const { name, address, email, city, cart } = req.body;
-        cartService.serviceAddUser(name, address, email, city, cart);
+        const { name, address, email, city, cart , total } = req.body;
+        console.log(total);
+        cartService.serviceAddUser(name, address, email, city, cart, total);
         res.end();
     }catch(err){
         console.log("failed in controller :",err);
