@@ -13,7 +13,7 @@ export default function () {
     <>
       {items.map((product) => {
         return (
-          <Product key={product.name} {...{ product, isAdder, cartCss }} />
+          <Product key={Math.random(2)} {...{ product, isAdder, cartCss }} />
         );
       })}
       <CartForm />

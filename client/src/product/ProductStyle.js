@@ -9,11 +9,12 @@ export const ProductBox = styled.div`
   display: flex;
   flex-direction: row;
   gap: 26px;
-  width: 95%;
+  width : ${props => props.special? '45%' : '95%' };
   justify-content: space-between;
   align-items: center;// works the ops of our flex-direction 
   box-shadow: 0 1.75px 1.75px 1.75px rgba(9, 9, 9, 0.23);
-  background-color: ${props => props.special? "black" : "white"};
+  background-color: ${props => props.special? "orange" : "white"};
+  
   img {
     max-width:25%;
     max-height:25%;

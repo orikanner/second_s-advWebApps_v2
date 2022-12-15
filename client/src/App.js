@@ -23,21 +23,22 @@ function App() {
   var currCart=[];
  
 
-    const [cartData, setCartData]= React.useState(currCart);
-    const [itemCount, setItemCount] = React.useState(currCart.length); 
+  //   const [cartData, setCartData]= React.useState(currCart);
+  //   const [itemCount, setItemCount] = React.useState(currCart.length); 
   
-    useEffect(()=>{
-      console.log("cuurcart",currCart);
-      setCartData(cartData);
+  //   useEffect(()=>{
+  //     console.log("cuurcart",currCart);
+  //     setCartData(cartData);
      
       
-  },[cartData])
+  // },[cartData])
 
   
   return (
     <>
       <Router>
-        <PageHeader itemCount={itemCount}/>
+      {/* //itemCount={itemCount} */}
+        <PageHeader />
         <Routes>
           <Route
             path="/"

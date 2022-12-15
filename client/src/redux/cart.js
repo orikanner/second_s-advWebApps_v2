@@ -17,6 +17,7 @@ const slice = createSlice({
         localStorage.setItem("cart",JSON.stringify(state));
     },
     removeProduct: (state, { payload: itemId }) => {
+        console.log("cart red ", itemId);
         const product = state.items.find(pr => pr._id == itemId);
 
         if (!product) {
