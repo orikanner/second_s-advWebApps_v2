@@ -10,7 +10,7 @@ export function PageHeader() {
 
   return (
     <>
-      <MyTitle>Check Out Our Menu</MyTitle>
+      <MyTitle>Foody</MyTitle>
       <LinksBox>
         <Link to="/">
           <>
@@ -18,7 +18,7 @@ export function PageHeader() {
           </>
         </Link>
         <Link to="/cart/MyCart">
-          <Badge overlap="rectangular" color="secondary" badgeContent={cart.items.length}>
+          <Badge overlap="rectangular" color="secondary" badgeContent={cart.totalProductsCount}>
             <ShoppingCartIcon />
           </Badge>
         </Link>

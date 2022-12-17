@@ -5,6 +5,9 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import { useSelector } from "react-redux";
+import Modal from 'react-bootstrap/Modal';
+import OrderCompleteModal from "./OrderCompleteModal";
+
 
 const FormBorder = styled.div`
   width: 90%;
@@ -17,20 +20,22 @@ const FormBorder = styled.div`
   background-color: #fff;
   color: black;
   padding: 4%;
-
+  
   Button {
     align-content: center;
   }
 `;
 
 export default function CartForm() {
-  const cart = useSelector((store)=>store.cart);
+  const cart = useSelector((store)=>store.cart); //to read from curr values in redux
+
 
   const Name = useRef();
   const Address = useRef();
   const Email = useRef();
   const City = useRef();
 
+ 
   
 
   //  const handleSubmit = async (e)=> { // diff s
@@ -39,7 +44,7 @@ export default function CartForm() {
     console.log("-form");
     try {
       const LSCart = cart.items;
-   
+      if(cart.totalPrice == 0){return null}// can add modal here
       const user = {
         name: Name.current.value,
         address: Address.current.value,
@@ -47,6 +52,7 @@ export default function CartForm() {
         city: City.current.address,
         Cart: LSCart,
         total: cart.totalPrice,
+        totalCartItems : cart.totalProductsCount
       };
 
       await fetch("http://localhost:5000/cart/userDetailsForm", {
@@ -55,6 +61,8 @@ export default function CartForm() {
         body: JSON.stringify(user),
       });
       localStorage.clear();
+      // return(<OrderCompleteModal></OrderCompleteModal>)
+      //document.location.reload();
     } catch (err) {
       console.error("cant send form");
     }

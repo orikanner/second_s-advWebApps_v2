@@ -6,10 +6,13 @@ const user = new mongoose.Schema({
     email:{type:String, require:'true'},
     city:{type:String, require:'true'},
     adderss: {type: String,required:'true'},
-    cart :{
-            type:[productSchema] ,require:'undefined'
-          },
+    cart :[{
+            product:productSchema ,
+             count:{type:Number,required:'true'}      // new
+         }],
+    totalProductsCount:{type:Number, require:'true'}, // new
     total : {type: Number , require:'true'}
+    
       
 })
 

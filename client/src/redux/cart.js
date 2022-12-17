@@ -5,28 +5,45 @@ const savedState = JSON.parse(localStorage.getItem("cart") || "{}");
 const slice = createSlice({
   name: 'cart',
   initialState: {
-    items: savedState.items || [],
+    items: savedState.items || [],//{pr:{},count:0}
     totalPrice: savedState.totalPrice || 0,
+    totalProductsCount:savedState.totalProductsCount || 0
   },
 
   reducers: {
     addProduct: (state, { payload: product }) => {
-        state.items.push(product);
+     console.log("in remove product we get pr in this format: ", product);
+     var isExist = false;
+      state.items?.forEach(element => (element.pr.name == product.name)? isExist =true : console.log() ); //(isExist?break:
+      if(!isExist){
+      state.items.push({pr:product, count:1});
+      
+      }
+      else{ //already exists
+        state.items.find(element => element.pr.name == product.name).count ++;
+      }
         state.totalPrice += product.price;
+        state.totalProductsCount ++;
         // todo update local storage 
         localStorage.setItem("cart",JSON.stringify(state));
     },
-    removeProduct: (state, { payload: itemId }) => {
-        console.log("cart red ", itemId);
-        const product = state.items.find(pr => pr._id == itemId);
-
-        if (!product) {
+    removeProduct: (state, { payload: product }) => {
+        console.log("in remove product we get pr in this format: ", product);
+        const thisProduct = state.items.find(element => element.pr.name === product.pr.name);
+         
+        if (!thisProduct) {
             console.warn("asked to remove nonexisting product");
             return;
         }
-
-        state.items.splice(state.items.indexOf(product), 1)
-        state.totalPrice -= product.price;
+        state.items.find(element => element.pr.name === product.pr.name).count--;
+        if(thisProduct.count === 0){
+          console.log(":count =1");
+          
+          state.items.splice(state.items.indexOf(thisProduct),1); // indexOf(product) doesnt work
+        }
+        
+        state.totalPrice -= thisProduct.pr.price;
+        state.totalProductsCount --;
         // todo update local storage
         localStorage.setItem("cart",JSON.stringify(state));
     }

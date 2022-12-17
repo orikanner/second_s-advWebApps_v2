@@ -12,8 +12,8 @@ const Header = styled.span`
 `
 
 export default function Product({product,cartCss, isAdder}) {  
- 
-  const dispath = useDispatch();//
+ console.log("shop pr format ", product);
+  const dispath = useDispatch();// for ex
   const btnContent = isAdder? "Add to Cart" : "Remove from Cart";
   const handler = isAdder 
     ? () => dispath(addProduct(product))
