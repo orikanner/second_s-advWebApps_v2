@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const productSchema = require('./Product').schema;
+//const productSchema = require('./Product').schema;
 
 const user = new mongoose.Schema({
     name:{type: String, required :'true'},
@@ -7,7 +7,7 @@ const user = new mongoose.Schema({
     city:{type:String, require:'true'},
     adderss: {type: String,required:'true'},
     cart :[{
-            product:productSchema ,
+            product:{type: mongoose.Schema.Types.ObjectId , ref: 'product'} ,
              count:{type:Number,required:'true'}      // new
          }],
     totalProductsCount:{type:Number, require:'true'}, // new

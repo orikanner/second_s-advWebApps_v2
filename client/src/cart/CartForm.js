@@ -7,7 +7,8 @@ import Row from "react-bootstrap/Row";
 import { useSelector } from "react-redux";
 import Modal from 'react-bootstrap/Modal';
 import OrderCompleteModal from "./OrderCompleteModal";
-
+import CartObjComponent from "./CartObjComponent";
+import { useState } from "react";
 
 const FormBorder = styled.div`
   width: 90%;
@@ -29,11 +30,16 @@ const FormBorder = styled.div`
 export default function CartForm() {
   const cart = useSelector((store)=>store.cart); //to read from curr values in redux
 
+  const[topModal,setTopModal] =useState(false);
 
   const Name = useRef();
   const Address = useRef();
   const Email = useRef();
   const City = useRef();
+  
+  // function  toggleModal(){
+  //   this.setState({ showModal: !this.state.showModal });
+  // } 
 
  
   
@@ -55,14 +61,30 @@ export default function CartForm() {
         totalCartItems : cart.totalProductsCount
       };
 
-      await fetch("http://localhost:5000/cart/userDetailsForm", {
+      const fetchReq = await fetch("http://localhost:5000/cart/userDetailsForm", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(user),
-      });
+        
+      }).then(()=> setTopModal(true)).error((e)=>setTopModal(false));
+      
       localStorage.clear();
-      // return(<OrderCompleteModal></OrderCompleteModal>)
-      document.location.reload();
+      
+      
+
+
+
+
+      //return(<OrderCompleteModal topModal= {topModal}></OrderCompleteModal>)
+      // toggleModal();
+      //document.location.reload();
+      // Name.current.value("");
+      // Address.current.value("");
+      // Email.current.value("");
+      // City.current.value("");
+      // e.target.reset();
+    
+      
     } catch (err) {
       console.error("cant send form");
     }
@@ -127,6 +149,7 @@ export default function CartForm() {
           </div>
         </Form>
       </FormBorder>
+       <OrderCompleteModal toggleModal={setTopModal} topModal={topModal}></OrderCompleteModal>
     </>
   );
 }

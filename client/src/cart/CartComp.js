@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";//selector- reading , dispatch -ex
-import React from "react";
+import React, { useState } from "react";
 import Product from "../product/Product";
 import CartForm from "./CartForm";
 import CartObjComponent from "./CartObjComponent";
@@ -7,10 +7,13 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { MyTitle } from "../publicDesign";
-
-
+import OrderCompleteModal from "./OrderCompleteModal";
 export default function () {
   const items = useSelector((store) => store.cart.items);
+
+const[topModal,setTopModal] =useState(true);
+
+
   var cartTitleH2 = (items.length ==0)?"Your Cart Is Empty" :"My Cart"
   const isAdder = false;
   const cartCss = "";
@@ -34,7 +37,8 @@ export default function () {
       })}
         </Row>
       </Container>
-      <CartForm />
+      <CartForm/>
+      {/* <OrderCompleteModal toggleModal ={setTopModal} topModal={topModal}></OrderCompleteModal> */}
     </>
   );
 }

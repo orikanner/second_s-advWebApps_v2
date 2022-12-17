@@ -1,3 +1,4 @@
+const { use } = require("../routes/productRoute");
 const cartService = require("../services/cartService");
 exports.getAllCartProducts =(req,res) =>{
     // res.status(200).json({
@@ -17,12 +18,15 @@ exports.userForm = (req,res) => {
     // city: City.current.address,
     // Cart: LSCart};
     try{
-        const { name, address, email, city, cart, total, totalCartItems} = req.body;
-        console.log(total);
-        cartService.serviceAddUser(name, address, email, city, cart, total, totalCartItems);
-        res.end();
+        const user = req.body;
+        const { name , address, email, city, cart, total, totalCartItems} = req.body;
+       // console.log(total);
+        cartService.serviceAddUser(name, address, email, city, cart, total,totalCartItems);
+//        cartService.serviceAddUser(JSON.parse(user));
+        res.status(200).json({user: req.body});
     }catch(err){
         console.log("failed in controller :",err);
+        res.status(500).json({message:"wrong input"});
     }
     
 }
