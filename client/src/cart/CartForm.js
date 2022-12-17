@@ -62,7 +62,7 @@ export default function CartForm() {
       });
       localStorage.clear();
       // return(<OrderCompleteModal></OrderCompleteModal>)
-      //document.location.reload();
+      document.location.reload();
     } catch (err) {
       console.error("cant send form");
     }

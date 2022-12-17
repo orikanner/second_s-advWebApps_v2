@@ -11,14 +11,15 @@ import { MyTitle } from "../publicDesign";
 
 export default function () {
   const items = useSelector((store) => store.cart.items);
-
+  var cartTitleH2 = (items.length ==0)?"Your Cart Is Empty" :"My Cart"
   const isAdder = false;
   const cartCss = "";
   var count=0;
   return (
     <>
     
-      <h2 className="myCartTitle">My Cart</h2>
+      <h2 className="myCartTitle">{cartTitleH2}</h2>
+      
     <Container>
       <Row xs={3}>
       {items.map((product) => {
